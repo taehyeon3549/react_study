@@ -1,22 +1,19 @@
-package com.taehyeon.chap04;
+package com.taehyeon.chap05;
+
+import com.taehyeon.chap04.Dish;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * static 한 class 객체를 import
- * */
 import static com.taehyeon.chap04.Dish.menu;
 
-public class StreamEx01 {
+public class SkipStream01Ex01 {
     public static void main(String[] args) {
-
-        List<String> names = menu.stream()      // 루프 퓨전
+        List<Dish> dishes = menu.stream()
                 .filter(dish -> dish.getCalories() > 300)
-                .map(Dish::getName)
-                .limit(3)
+                .skip(2)
                 .collect(Collectors.toList());
 
-        System.out.println(names);
+        dishes.stream().forEach(System.out::println);
     }
 }
